@@ -53,13 +53,13 @@ export default function CheckoutForm() {
 
     const clientSecret = await res.json();
 
-    const { error } = await stripe.confirmPayment({
-      elements,
-      clientSecret,
-      confirmParams: {
-        return_url: "http://localhost:3000",
-      },
-    });
+		const { error } = await stripe.confirmPayment({
+			elements,
+			clientSecret,
+			confirmParams: {
+				return_url: "http://localhost:3000",
+			},
+		});
 
     if (error) {
       handleError(error);
