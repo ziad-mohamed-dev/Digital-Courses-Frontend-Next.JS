@@ -22,12 +22,12 @@ function Hero() {
             >
               Get Started
             </Link>
-            <a
+            <Link
               className="block w-full rounded px-12 py-3 text-sm font-medium text-primary shadow shadow-primary hover:text-primaryHover focus:outline-none focus:ring active:text-primaryHover sm:w-auto"
-              href="#"
+              href="#productSection"
             >
               Learn More
-            </a>
+            </Link>
           </div>
         </div>
       </div>
