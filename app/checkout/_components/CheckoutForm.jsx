@@ -57,7 +57,8 @@ export default function CheckoutForm() {
       elements,
       clientSecret,
       confirmParams: {
-        return_url: "https://e-commerce-frontend-next-js.vercel.app/",
+        return_url:
+          "https://e-commerce-frontend-next-js.vercel.app/",
       },
     });
 
