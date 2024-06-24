@@ -1,12 +1,13 @@
+"use client";
 import React, { useContext, useState } from "react";
 import {
   useStripe,
   useElements,
   PaymentElement,
 } from "@stripe/react-stripe-js";
-import getTotalPrice from "../../_utils/totalAmount";
 import CartApis from "../../_utils/CartApis";
 import { CartContext } from "../../_context/CartContext";
+import getTotalPrice from "../../_utils/totalAmount";
 
 export default function CheckoutForm() {
   const stripe = useStripe();
@@ -14,7 +15,6 @@ export default function CheckoutForm() {
   const [errorMessage, setErrorMessage] = useState();
   const [loading, setLoading] = useState(false);
   const { cart } = useContext(CartContext);
-  const amount = getTotalPrice();
 
   const handleError = (error) => {
     setLoading(false);
@@ -45,7 +45,7 @@ export default function CheckoutForm() {
     const res = await fetch("/api/create-intent", {
       method: "POST",
       body: JSON.stringify({
-        amount: amount,
+        amount: getTotalPrice(),
       }),
     }).catch((err) => {
       console.log(err);
@@ -57,8 +57,7 @@ export default function CheckoutForm() {
       elements,
       clientSecret,
       confirmParams: {
-        return_url:
-          "https://e-commerce-frontend-next-4960qjnlk-hunter-smsms-projects.vercel.app/",
+        return_url: "https://e-commerce-frontend-next-js.vercel.app/",
       },
     });
 
