@@ -55,7 +55,7 @@ export default function CheckoutForm() {
 			elements,
 			clientSecret,
 			confirmParams: {
-				return_url: "http://localhost:3000",
+				return_url: "https://e-commerce-frontend-next-4960qjnlk-hunter-smsms-projects.vercel.app/",
 			},
 		});
 
