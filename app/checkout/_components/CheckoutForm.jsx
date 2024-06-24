@@ -53,13 +53,14 @@ export default function CheckoutForm() {
 
     const clientSecret = await res.json();
 
-		const { error } = await stripe.confirmPayment({
-			elements,
-			clientSecret,
-			confirmParams: {
-				return_url: "http://localhost:3000",
-			},
-		});
+    const { error } = await stripe.confirmPayment({
+      elements,
+      clientSecret,
+      confirmParams: {
+        return_url:
+          "https://e-commerce-frontend-next-4960qjnlk-hunter-smsms-projects.vercel.app/",
+      },
+    });
 
     if (error) {
       handleError(error);
