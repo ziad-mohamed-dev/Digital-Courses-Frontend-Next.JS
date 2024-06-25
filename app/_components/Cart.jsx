@@ -6,7 +6,7 @@ function Cart({ cartState: { openCart, setOpenCart } }) {
 	const { cart } = useContext(CartContext);
 	return (
 		<div
-			className="absolute cursor-default right-0 sm:right-8 top-16 z-50 w-screen max-w-sm border border-primary bg-gray-100 dark:bg-gray-900 px-4 py-8 sm:px-6 lg:px-8"
+			className="absolute cursor-default right-0 sm:right-8 top-16 z-50 w-screen max-w-sm border-x-2 border-b-2 border-t border-primary bg-gray-100 dark:bg-gray-900 px-4 py-8 sm:px-6 lg:px-8"
 			aria-modal="true"
 			role="dialog"
 			tabIndex="-1"
@@ -35,54 +35,62 @@ function Cart({ cartState: { openCart, setOpenCart } }) {
 			</button>
 			<div className="mt-4 space-y-6">
 				<ul className="space-y-4">
-					{cart?.products?.map((product) => {
-						return (
-							<li key={product.id}>
-								<Link
-									href={`/product-details/${product.id}`}
-									className="flex items-center gap-4"
-								>
-									<img
-										src={
-											product?.attributes?.banner?.data
-												?.attributes?.url
-										}
-										alt=""
-										className="size-16 rounded object-cover"
-									/>
-									<div>
-										<h3 className="text-sm line-clamp-1">
-											{product?.attributes?.title}
-										</h3>
-										<dl className="mt-0.5 space-y-px text-[10px] text-gray-400">
-											<div>
-												<dt className="inline">
-													Category:
-												</dt>
-												<dd className="inline">
-													{` ${product?.attributes?.category}`}
-												</dd>
-											</div>
-											<div>
-												<dt className="inline">
-													Price:
-												</dt>
-												<dd className="inline">{` $${product?.attributes?.price}`}</dd>
-											</div>
-										</dl>
-									</div>
-								</Link>
-							</li>
-						);
-					})}
+					{cart?.products.length === 0 ? (
+						<h2 className="text-center text-gray-400">
+							Empty Cart
+						</h2>
+					) : (
+						cart?.products?.map((product) => {
+							return (
+								<li key={product.id}>
+									<Link
+										href={`/product-details/${product.id}`}
+										className="flex items-center gap-4"
+									>
+										<img
+											src={
+												product?.attributes?.banner
+													?.data?.attributes?.url
+											}
+											alt=""
+											className="size-16 rounded object-cover"
+										/>
+										<div>
+											<h3 className="text-sm line-clamp-1">
+												{product?.attributes?.title}
+											</h3>
+											<dl className="mt-0.5 space-y-px text-[10px] text-gray-400">
+												<div>
+													<dt className="inline">
+														Category:
+													</dt>
+													<dd className="inline">
+														{` ${product?.attributes?.category}`}
+													</dd>
+												</div>
+												<div>
+													<dt className="inline">
+														Price:
+													</dt>
+													<dd className="inline">{` $${product?.attributes?.price}`}</dd>
+												</div>
+											</dl>
+										</div>
+									</Link>
+								</li>
+							);
+						})
+					)}
 				</ul>
 				<div className="space-y-4 text-center">
-					<Link
-						href="/cart"
-						className="block rounded border border-primary px-5 py-3 text-sm bg-primary hover:bg-primaryHover text-white transition hover:ring-1 hover:ring-primaryHover"
-					>
-						View my cart ({cart.products.length})
-					</Link>
+					{cart?.products.length !== 0 && (
+						<Link
+							href="/cart"
+							className="block rounded border border-primary px-5 py-3 text-sm bg-primary hover:bg-primaryHover text-white transition hover:ring-1 hover:ring-primaryHover"
+						>
+							View my cart ({cart.products.length})
+						</Link>
+					)}
 					<Link
 						href="/"
 						className="inline-block text-sm text-primary underline underline-offset-4 transition hover:text-primaryHover"
