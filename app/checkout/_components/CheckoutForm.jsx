@@ -58,7 +58,7 @@ export default function CheckoutForm() {
       clientSecret,
       confirmParams: {
         return_url:
-          "https://e-commerce-frontend-next-js.vercel.app/",
+          "http://localhost:3000/",
       },
     });
 
