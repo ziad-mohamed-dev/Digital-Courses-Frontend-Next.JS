@@ -27,7 +27,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "app/api/create-intent/route.tsx"  ],
   "exclude": [
     "node_modules"
   ]

@@ -7,10 +7,10 @@ function Footer() {
   const pathName = usePathname();
   return (
     !["/sign-in", "/sign-up"].includes(pathName) && (
-      <footer className="bg-gray-50 dark:bg-gray-900 shadow-[0_0_6px_0_inset] shadow-primary mt-20">
-        <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
-          <div className="sm:flex sm:items-center sm:justify-between">
-            <div className="flex justify-center sm:justify-start">
+      <footer className="bg-gray-50 dark:bg-gray-900 shadow-[0_0_6px_0] shadow-primary mt-20">
+        <div className="mx-auto max-w-screen-xl px-4 py-8 px-6 lg:px-8">
+          <div className="flex items-center justify-between">
+            <div className="flex justify-center justify-start">
               <Image
                 src="/logo.svg"
                 width={50}

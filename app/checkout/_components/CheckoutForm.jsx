@@ -7,9 +7,8 @@ import {
 } from "@stripe/react-stripe-js";
 import CartApis from "../../_utils/CartApis";
 import { CartContext } from "../../_context/CartContext";
-import getTotalPrice from "../../_utils/totalAmount";
 
-export default function CheckoutForm() {
+export default function CheckoutForm({ amount }) {
   const stripe = useStripe();
   const elements = useElements();
   const [errorMessage, setErrorMessage] = useState();
@@ -30,12 +29,6 @@ export default function CheckoutForm() {
 
     setLoading(true);
 
-    CartApis.updateCartItems(cart.cartId, {
-      data: {
-        products: [],
-      },
-    });
-
     const { error: submitError } = await elements.submit();
     if (submitError) {
       handleError(submitError);
@@ -45,7 +38,7 @@ export default function CheckoutForm() {
     const res = await fetch("/api/create-intent", {
       method: "POST",
       body: JSON.stringify({
-        amount: getTotalPrice(),
+        amount: Number(amount),
       }),
     }).catch((err) => {
       console.log(err);
@@ -57,14 +50,18 @@ export default function CheckoutForm() {
       elements,
       clientSecret,
       confirmParams: {
-        return_url:
-          "http://localhost:3000/",
+        return_url: "https://e-commerce-frontend-next-js.vercel.app/",
       },
     });
 
     if (error) {
       handleError(error);
     } else {
+      CartApis.updateCartItems(cart.cartId, {
+        data: {
+          products: [],
+        },
+      });
     }
   };
 
