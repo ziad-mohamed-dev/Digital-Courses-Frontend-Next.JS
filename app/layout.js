@@ -17,8 +17,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <>
-      <Analytics />
-      <SpeedInsights />
+      {/* <Analytics /> */}
+      {/* <SpeedInsights /> */}
       <ClerkProvider>
         <CartContextProvider>
           <html lang="en" className="dark">
