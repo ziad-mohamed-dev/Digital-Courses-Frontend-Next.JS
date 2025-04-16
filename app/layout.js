@@ -4,8 +4,6 @@ import Header from "./_components/Header";
 import Footer from "./_components/Footer";
 import { ClerkProvider } from "@clerk/nextjs";
 import CartContextProvider from "./_context/CartContext";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/react";
 
 const inter = Roboto({ subsets: ["latin"], weight: "700" });
 
@@ -17,8 +15,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <>
-      <Analytics />
-      <SpeedInsights />
       <ClerkProvider>
         <CartContextProvider>
           <html lang="en" className="dark">
