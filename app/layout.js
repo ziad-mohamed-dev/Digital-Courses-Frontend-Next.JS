@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
             >
               <div className="min-h-[calc(100vh-99px-80px)]">
                 <Header />
-                {children}
+                <div className="container mx-auto">{children}</div>
               </div>
               <Footer />
             </body>
