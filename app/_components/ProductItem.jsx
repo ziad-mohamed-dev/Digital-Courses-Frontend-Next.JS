@@ -14,6 +14,8 @@ function ProductItem({ product }) {
           src={product?.attributes?.banner?.data?.attributes?.url}
           alt="banner-card"
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          priority
           className="rounded-t-lg object-cover h-[170px]"
         />
       </div>
